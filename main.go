@@ -46,9 +46,16 @@ func main() {
 				log.Println("// Could be a real auth issue like invalid username or password")
 				log.Fatal(err)
 			}
+
+			bucket, err = cluster.OpenBucket("default", "")
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 
-		log.Fatal(err)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	_, err = bucket.Upsert("u:kingarthur",
