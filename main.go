@@ -51,11 +51,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	bucket, err = cluster.OpenBucket("default", "")
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	_, err = bucket.Upsert("u:kingarthur",
 		User{
 			Id:        "kingarthur",

@@ -10,9 +10,9 @@ untilsuccessful() {
   done
 }
 
-sudo docker stop couchbase
-sudo docker rm couchbase
-sudo docker pull couchbase:5.0.1
+ docker stop couchbase
+ docker rm couchbase
+ docker pull couchbase:5.0.1
 docker run -d --name couchbase --net="host" -v /tmp:/tmp couchbase:5.0.1
 sleep 5
 untilsuccessful docker exec -it couchbase /opt/couchbase/bin/couchbase-cli cluster-init -c localhost:8091 --cluster-username=Administrator --cluster-password=password --cluster-ramsize=512 --service='data;index;query'
