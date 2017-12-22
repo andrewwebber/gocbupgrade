@@ -30,7 +30,7 @@ func main() {
 
 	bucket, err := cluster.OpenBucket("default", "")
 	if err != nil {
-		if err.Error() == "authentication error" {
+		if err == gocb.ErrAuthError {
 			log.Println(" Assume using CouchbaseV5")
 			err = cluster.Authenticate(gocb.PasswordAuthenticator{
 				Username: "Administrator",
