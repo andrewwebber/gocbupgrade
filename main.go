@@ -32,11 +32,6 @@ func main() {
 	if err != nil {
 		if err.Error() == "authentication error" {
 			log.Println(" Assume using CouchbaseV5")
-			cluster, err = gocb.Connect("couchbase://localhost")
-			if err != nil {
-				log.Fatal(err)
-			}
-
 			err = cluster.Authenticate(gocb.PasswordAuthenticator{
 				Username: "Administrator",
 				Password: "password",
